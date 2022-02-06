@@ -1,0 +1,43 @@
+{
+  "name": "intuitivecontacts",
+  "version": "0.0.1",
+  "description": "Intuitive Contacts, a contacts management application!",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/TheBinitGhimire/IntuitiveContacts.git"
+  },
+  "keywords": [
+    "intuitive",
+    "contacts",
+    "manager",
+    "management"
+  ],
+  "author": "Binit Ghimire",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TheBinitGhimire/IntuitiveContacts/issues"
+  },
+  "homepage": "https://github.com/TheBinitGhimire/IntuitiveContacts#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": [
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "eslint": "^8.8.0",
+    "eslint-config-leapfrog": "^3.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.3",
+    "nodemon": "^2.0.15"
+  }
+}
