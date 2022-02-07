@@ -31,11 +31,14 @@ const userSchema = new mongoose.Schema(
     name: {
       type: String,
       maxlength: 128,
+      required: true,
       index: true,
       trim: true,
     },
     phone: {
       type: String,
+      trim: true,
+      required: true,
     },
     role: {
       type: String,
@@ -45,6 +48,7 @@ const userSchema = new mongoose.Schema(
     picture: {
       type: String,
       trim: true,
+      default: "https://res.cloudinary.com/binit/image/upload/v1644233860/IntuitiveContacts/profile_ya4nx1.png",
     },
   },
   {
@@ -71,7 +75,7 @@ userSchema.pre("save", async function save(next) {
 userSchema.method({
   transform() {
     const transformed = {};
-    const fields = ["id", "name", "email", "picture", "role", "createdAt"];
+    const fields = ["id", "name", "email", "phone", "picture", "role", "createdAt"];
 
     fields.forEach((field) => {
       transformed[field] = this[field];
