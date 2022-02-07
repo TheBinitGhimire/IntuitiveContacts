@@ -1,7 +1,27 @@
 import httpStatus from "http-status";
+import cloudinary from "../../config/cloudinary.js";
+
 import Contact from "../models/contact.model.js";
 
 const viewProfile = (req, res) => res.json(req.user.transform());
+
+const uploadImage = async (req, res, next) => {
+  try {
+    const result = await cloudinary.uploader.upload(req.file.path, {
+      folder: "IntuitiveContacts/ProfileImages/",
+    });
+    const resize = cloudinary.url(result.public_id, {
+      width: 256,
+      height: 256,
+      gravity: "faces",
+      crop: "fill",
+    });
+    res.json({ imageURL: resize });
+  } catch (err) {
+    console.log(err);
+    next(err);
+  }
+};
 
 const readContacts = async (req, res, next) => {
   try {
@@ -47,5 +67,12 @@ const deleteContact = async (req, res, next) => {
   );
 };
 
-const appController = { viewProfile, readContacts, createContact, updateContact, deleteContact };
+const appController = {
+  viewProfile,
+  uploadImage,
+  readContacts,
+  createContact,
+  updateContact,
+  deleteContact,
+};
 export default appController;
