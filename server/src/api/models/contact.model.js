@@ -16,6 +16,7 @@ const contactSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
+    default: "https://res.cloudinary.com/binit/image/upload/v1644233860/IntuitiveContacts/profile_ya4nx1.png",
   },
   email: {
     type: String,
