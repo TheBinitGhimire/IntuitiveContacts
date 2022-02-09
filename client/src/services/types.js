@@ -3,10 +3,4 @@ export const AUTH_USER = "AUTH_USER";
 export const UNAUTH_USER = "UNAUTH_USER";
 
 export const GET_PROFILE = "GET_PROFILE";
-export const GET_CONTACTS = "GET_CONTACTS";
-export const CREATE_CONTACT = "CREATE_CONTACT";
-export const UPDATE_CONTACT = "UPDATE_CONTACT";
-export const DELETE_CONTACT = "DELETE_CONTACT";
-export const GET_CONTACTS_PROFILE = "GET_CONTACTS_PROFILE";
-
 export const LOADING = "LOADING";

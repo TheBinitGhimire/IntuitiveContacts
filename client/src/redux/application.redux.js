@@ -1,9 +1,5 @@
 import {
   GET_PROFILE,
-  GET_CONTACTS,
-  CREATE_CONTACT,
-  UPDATE_CONTACT,
-  DELETE_CONTACT,
 } from "../services/types";
 
 const initialState = {
