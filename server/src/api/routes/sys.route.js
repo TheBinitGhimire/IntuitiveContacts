@@ -7,6 +7,7 @@ const {
   signup: signupController,
   signin: signinController,
   refresh: refreshController,
+  logout: logoutController,
 } = sysController;
 const { signup, signin, refresh } = sysValidations;
 
@@ -15,5 +16,6 @@ const router = express.Router();
 router.route("/signup").post(validate(signup), signupController);
 router.route("/signin").post(validate(signin), signinController);
 router.route("/refresh").post(validate(refresh), refreshController);
+router.route("/logout").get(logoutController);
 
 export default router;

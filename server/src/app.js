@@ -8,10 +8,13 @@ import mongoose from "mongoose";
 import passport from "passport";
 import router from "./api/routes/index.js";
 import jwt from "./config/jwt.js";
+import path from "path";
 
 mongoose.connect(config.mongodb.uri);
 
 const app = express();
+
+app.use(express.static(path.resolve(path.dirname("./"), "../../client/build")));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

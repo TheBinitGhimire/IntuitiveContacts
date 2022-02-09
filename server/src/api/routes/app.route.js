@@ -27,6 +27,11 @@ router
 
 router
   .route("/contacts/:id")
+  .get(
+    authorize(LOGGED_USER),
+    appController.viewContact
+  )
+
   .put(
     authorize(LOGGED_USER),
     validate(updateContact),

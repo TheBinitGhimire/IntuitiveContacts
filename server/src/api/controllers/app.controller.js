@@ -23,6 +23,15 @@ const uploadImage = async (req, res, next) => {
   }
 };
 
+const viewContact = async (req, res, next) => {
+  try {
+    const contact = await Contact.findOne({ _id: req.params.id, author: req.user._id });
+    res.json(contact);
+  } catch (error) {
+    next(error);
+  }
+};
+
 const readContacts = async (req, res, next) => {
   try {
     const contacts = await Contact.find({ author: req.user._id });
@@ -70,6 +79,7 @@ const deleteContact = async (req, res, next) => {
 const appController = {
   viewProfile,
   uploadImage,
+  viewContact,
   readContacts,
   createContact,
   updateContact,
