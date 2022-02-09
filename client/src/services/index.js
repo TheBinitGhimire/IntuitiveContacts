@@ -92,6 +92,11 @@ export const getContacts = async () => {
   return res.data;
 };
 
+export const uploadImage = async (data) => {
+  const res = await postRequest("app/uploadImage", data, localStorage.authorizationJWT);
+  return res.data;
+};
+
 export const getContactProfile = async (cid) => {
   const res = await getRequest(
     "app/contacts/" + cid,

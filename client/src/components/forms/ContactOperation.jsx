@@ -1,20 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
-import {
-  checkToken,
-  createContact,
-  getContactProfile,
-  updateContact,
-} from "../../services";
+import { checkToken, createContact, updateContact } from "../../services";
 
-function ContactOperationForm() {
+function ContactOperationForm(props) {
   const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    picture:
-      "https://res.cloudinary.com/binit/image/upload/v1644233860/IntuitiveContacts/profile_ya4nx1.png",
-    email: "",
-    address: "",
+    name: props.name,
+    phone: props.phone,
+    picture: props.picture,
+    email: props.email,
+    address: props.address,
   });
 
   const [isNew, setIsNew] = useState(1);
@@ -47,25 +41,29 @@ function ContactOperationForm() {
   useEffect(() => {
     if (currentPage.pathname.startsWith("/contacts/modify")) {
       setIsNew(0);
-      const contactProfile = getContactProfile(params.id);
-      Promise.resolve(contactProfile).then((data) => {
-        const { name, phone, picture, email, address } = data;
-        setFormData({ name, phone, picture, email, address });
+      setFormData({
+        name: props.name,
+        phone: props.phone,
+        picture: props.picture,
+        email: props.email,
+        address: props.address,
       });
     }
-  }, [params, currentPage]);
+  }, [props, currentPage]);
+
+  useEffect(() => {
+    if (formData.picture !== props.picture)
+      setFormData({ ...formData, picture: props.picture });
+  }, [formData, props.picture]);
 
   return (
     <form className="mt-8 space-y-6" action="#" onSubmit={handleSubmit}>
       <input
-        type="hidden"
+        type="text"
         name="picture"
+        className="hidden"
+        value={props.picture}
         onChange={handleChangeInput}
-        value={
-          formData.picture
-            ? formData.name
-            : "https://res.cloudinary.com/binit/image/upload/v1644233860/IntuitiveContacts/profile_ya4nx1.png"
-        }
       />
       <div className="rounded-md shadow-sm -space-y-px">
         <div className="p-1">
@@ -76,7 +74,7 @@ function ContactOperationForm() {
             id="name"
             name="name"
             type="text"
-            value={formData.name ? formData.name : ""}
+            value={formData.name}
             autoComplete="name"
             onChange={handleChangeInput}
             required
@@ -92,7 +90,7 @@ function ContactOperationForm() {
             id="email-address"
             name="email"
             type="email"
-            value={formData.email ? formData.email : ""}
+            value={formData.email}
             autoComplete="email"
             onChange={handleChangeInput}
             className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
@@ -107,7 +105,7 @@ function ContactOperationForm() {
             id="phone-number"
             name="phone"
             type="tel"
-            value={formData.phone ? formData.phone : ""}
+            value={formData.phone}
             autoComplete="tel"
             onChange={handleChangeInput}
             required
@@ -123,7 +121,7 @@ function ContactOperationForm() {
             id="address"
             name="address"
             type="text"
-            value={formData.address ? formData.address : ""}
+            value={formData.address}
             autoComplete="street-address"
             onChange={handleChangeInput}
             className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
