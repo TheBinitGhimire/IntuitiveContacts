@@ -2,7 +2,7 @@ import "dotenv/config";
 
 let config = {
   env: process.env.NODE_ENV,
-  port: 1337,
+  port: process.env.PORT || 1337,
   mongodb: {
     uri: process.env.MONGODB_URI,
   },
