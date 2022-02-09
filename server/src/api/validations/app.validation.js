@@ -13,9 +13,9 @@ const appValidations = {
 
   updateContact: {
     body: Joi.object({
-      name: Joi.string().required(),
-      phone: Joi.string().required(),
-      picture: Joi.string().required(),
+      name: Joi.string(),
+      phone: Joi.string(),
+      picture: Joi.string(),
       email: Joi.string().email(),
       address: Joi.string(),
     }),

@@ -22,7 +22,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(compression());
 
 app.use(methodOverride());
-app.use(cors());
+app.use(cors({
+  origin: "*"
+}));
 
 app.use(passport.initialize());
 passport.use("jwt", jwt);

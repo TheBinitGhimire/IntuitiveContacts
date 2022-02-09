@@ -16,6 +16,7 @@ const uploadImage = async (req, res, next) => {
       gravity: "faces",
       crop: "fill",
     });
+    res.header("Access-Control-Allow-Origin", "*");
     res.json({ imageURL: resize });
   } catch (err) {
     console.log(err);
