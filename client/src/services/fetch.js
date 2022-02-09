@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const requester = axios.create({
-  baseURL: "http://192.168.1.65:1337/api/"
+  baseURL: "https://intuitive-contacts.herokuapp.com/api/"
 })
 
 export const getRequest = async (url, token) => {
