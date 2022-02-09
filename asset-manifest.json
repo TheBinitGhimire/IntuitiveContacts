@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/IntuitiveContacts/static/css/main.18384776.css",
+    "main.js": "/IntuitiveContacts/static/js/main.fe81de77.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/IntuitiveContacts/static/js/787.c4e7f8f9.chunk.js",
+    "index.html": "/IntuitiveContacts/index.html",
+    "main.18384776.css.map": "/IntuitiveContacts/static/css/main.18384776.css.map",
+    "main.fe81de77.js.map": "/IntuitiveContacts/static/js/main.fe81de77.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/IntuitiveContacts/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.18384776.css",
+    "static/js/main.fe81de77.js"
+  ]
+}
